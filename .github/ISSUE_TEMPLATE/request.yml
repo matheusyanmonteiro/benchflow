@@ -1,0 +1,52 @@
+name: "📋 Pedido"
+description: Solicite manutenção, documentação, automação ou apoio técnico
+title: "[Pedido]: "
+labels: ["request", "triage"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      options:
+        - Documentação
+        - Manutenção técnica
+        - Automação/CI
+        - Dados ou relatório
+        - Outro pedido operacional
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: O que precisa ser feito?
+      description: Escreva um pedido objetivo e delimitado.
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Contexto e resultado esperado
+      description: Explique por que o pedido importa e como saberemos que foi concluído.
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Prazo ou evento relacionado
+      placeholder: 30/09/2026 — apresentação do benchmark
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceite
+      placeholder: |
+        - [ ] Entrega disponível em...
+        - [ ] Validação realizada por...
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Verificações
+      options:
+        - label: O pedido não expõe dados pessoais ou credenciais
+          required: true

@@ -1,0 +1,52 @@
+name: "✨ Feature"
+description: Proponha uma nova funcionalidade com valor claro
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: opportunity
+    attributes:
+      label: Problema ou oportunidade
+      description: Descreva a necessidade antes de sugerir a solução.
+      placeholder: Como pessoa usuária, preciso..., para que...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Solução proposta
+      description: Explique o comportamento desejado e o escopo.
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Critérios de aceite
+      placeholder: |
+        - [ ] Dado que..., quando..., então...
+        - [ ] A documentação descreve...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade sugerida
+      options:
+        - Baixa
+        - Média
+        - Alta
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Verificações
+      options:
+        - label: Pesquisei issues existentes e não encontrei uma proposta equivalente
+          required: true
+        - label: A proposta descreve valor e critérios verificáveis
+          required: true

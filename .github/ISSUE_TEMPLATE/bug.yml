@@ -1,0 +1,62 @@
+name: "🐛 Bug"
+description: Reporte um comportamento incorreto ou inesperado
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Obrigado pelo relato. Inclua informações suficientes para reproduzirmos o problema.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Descrição do problema
+      description: Explique o que aconteceu e qual foi o impacto.
+      placeholder: Ao tentar..., a API retorna...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. Envie uma requisição para...
+        2. Use o payload...
+        3. Observe o retorno...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências
+      description: Logs sanitizados, resposta HTTP ou captura de tela. Não inclua segredos.
+  - type: input
+    id: version
+    attributes:
+      label: Versão ou commit
+      placeholder: v0.1.0 ou SHA do commit
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidade
+      options:
+        - Baixa — há alternativa simples
+        - Média — afeta o uso, mas não bloqueia
+        - Alta — bloqueia uma função importante
+        - Crítica — indisponibilidade, perda de dados ou segurança
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Verificações
+      options:
+        - label: Pesquisei issues abertas e não encontrei uma duplicada
+          required: true
+        - label: Removi dados sensíveis das evidências
+          required: true

@@ -1,0 +1,50 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar o uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Instalar o Python
+        run: uv python install 3.12
+
+      - name: Instalar as dependências travadas
+        run: uv sync --locked --dev --python 3.12
+
+      - name: Validar qualidade do código
+        run: uv run ruff check .
+
+      - name: Executar testes e validar cobertura
+        run: uv run pytest
+
+      - name: Publicar relatório de cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+          if-no-files-found: ignore
