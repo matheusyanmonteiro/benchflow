@@ -10,7 +10,7 @@ Benchmark didático de GitFlow com um CRUD Python, testes automatizados, cobertu
 - testes automatizados com `pytest` e cobertura mínima de 95%;
 - lint com Ruff;
 - GitHub Actions executado em todo PR para `main` ou `develop`;
-- `main` protegida por PR, aprovação de outro colaborador, conversas resolvidas e check `quality` aprovado;
+- `main` protegida por PR, conversas resolvidas e check `quality` aprovado, com bypass disponível para administradores;
 - dependências monitoradas pelo Dependabot e ownership via CODEOWNERS.
 
 ## Executar o projeto
@@ -69,14 +69,5 @@ flowchart LR
 ```
 
 O fluxo completo, as convenções de branch e a política de revisão estão em [CONTRIBUTING.md](CONTRIBUTING.md). Os exemplos para apresentação estão em [`docs/exemplos`](docs/exemplos).
-
-## Roteiro rápido para a apresentação
-
-1. Mostre os três botões de abertura de issue e abra o exemplo de feature.
-2. Crie `feature/2-filtrar-tarefas` a partir da branch adotada pela equipe.
-3. Faça uma alteração propositalmente sem teste e mostre a CI barrando o PR.
-4. Adicione o teste, envie o novo commit e mostre o check `quality` aprovado.
-5. Mostre que a `main` não aceita push direto e ainda exige revisão/conversas resolvidas.
-6. Faça squash merge e demonstre a ligação automática `Closes #2` entre PR e issue.
 
 > A proteção é aplicada no GitHub, não apenas por um arquivo versionado. A configuração reproduzível está em [`.github/branch-protection.json`](.github/branch-protection.json).
