@@ -38,6 +38,6 @@ Risco operacional baixo; há pequeno consumo adicional de armazenamento. Para ro
 ## Checklist
 
 - [x] Workflow com permissões mínimas
-- [x] Dependências de Actions fixadas por versão principal
+- [x] Dependências de Actions fixadas pelo SHA completo da release
 - [x] Documentação atualizada
 - [x] CI verde
