@@ -2,7 +2,8 @@
   "required_status_checks": {
     "strict": true,
     "contexts": [
-      "quality"
+      "quality",
+      "package"
     ]
   },
   "enforce_admins": false,

@@ -9,9 +9,10 @@ Benchmark didático de GitFlow com um CRUD Python, testes automatizados, cobertu
 - API CRUD de tarefas com FastAPI;
 - testes automatizados com `pytest` e cobertura mínima de 95%;
 - lint com Ruff;
-- GitHub Actions executado em todo PR para `main` ou `develop`;
+- GitHub Actions executado em todo PR para `main` ou `develop`, validando código e packages;
 - `main` protegida por PR, conversas resolvidas e check `quality` aprovado, com bypass disponível para administradores;
 - dependências monitoradas pelo Dependabot e ownership via CODEOWNERS.
+- releases semânticas com notas pré-preenchidas, artifacts verificáveis e imagem no GHCR.
 
 ## Executar o projeto
 
@@ -71,3 +72,15 @@ flowchart LR
 O fluxo completo, as convenções de branch e a política de revisão estão em [CONTRIBUTING.md](CONTRIBUTING.md). Os exemplos para apresentação estão em [`docs/exemplos`](docs/exemplos).
 
 > A proteção é aplicada no GitHub, não apenas por um arquivo versionado. A configuração reproduzível está em [`.github/branch-protection.json`](.github/branch-protection.json).
+
+## Releases e packages
+
+Cada tag semântica, como `v0.1.0`, passa novamente pela qualidade antes de publicar:
+
+- `wheel` e `sdist` Python;
+- arquivo `SHA256SUMS` para integridade;
+- attestations de procedência verificáveis pelo GitHub CLI;
+- GitHub Release com notas categorizadas;
+- imagem `ghcr.io/matheusyanmonteiro/benchflow:<versão>` testada antes do push.
+
+O Release Drafter mantém a próxima release em rascunho e pré-preenchida a cada merge na `main`. O processo completo está em [RELEASING.md](RELEASING.md).
