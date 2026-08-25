@@ -1,6 +1,6 @@
 """Repositório em memória usado pelo exemplo."""
 
-from app.schemas import Task, TaskCreate, TaskUpdate
+from app.schemas import Task, TaskCreate, TaskSummary, TaskUpdate
 
 
 class TaskRepository:
@@ -18,6 +18,11 @@ class TaskRepository:
 
     def list(self) -> list[Task]:
         return list(self._tasks.values())
+
+    def summary(self) -> TaskSummary:
+        completed = sum(task.completed for task in self._tasks.values())
+        total = len(self._tasks)
+        return TaskSummary(total=total, pending=total - completed, completed=completed)
 
     def get(self, task_id: int) -> Task | None:
         return self._tasks.get(task_id)

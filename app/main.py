@@ -5,7 +5,7 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 
 from app.repository import TaskRepository
-from app.schemas import Task, TaskCreate, TaskUpdate
+from app.schemas import Task, TaskCreate, TaskSummary, TaskUpdate
 
 app = FastAPI(
     title="BenchFlow CRUD",
@@ -35,6 +35,11 @@ def create_task(data: TaskCreate, repository: Repository) -> Task:
 @app.get("/tasks", response_model=list[Task], tags=["tasks"])
 def list_tasks(repository: Repository) -> list[Task]:
     return repository.list()
+
+
+@app.get("/tasks/summary", response_model=TaskSummary, tags=["tasks"])
+def summarize_tasks(repository: Repository) -> TaskSummary:
+    return repository.summary()
 
 
 @app.get("/tasks/{task_id}", response_model=Task, tags=["tasks"])
