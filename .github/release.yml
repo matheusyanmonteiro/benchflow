@@ -1,0 +1,26 @@
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+    authors:
+      - dependabot
+  categories:
+    - title: "⚠️ Mudanças incompatíveis"
+      labels:
+        - major
+    - title: "✨ Novas funcionalidades"
+      labels:
+        - enhancement
+        - minor
+    - title: "🐛 Correções"
+      labels:
+        - bug
+        - patch
+    - title: "📚 Documentação e manutenção"
+      labels:
+        - documentation
+        - request
+        - dependencies
+    - title: "🔧 Outras mudanças"
+      labels:
+        - "*"

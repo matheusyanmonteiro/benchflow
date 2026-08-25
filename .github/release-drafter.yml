@@ -1,0 +1,65 @@
+name-template: "BenchFlow v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+change-template: "- $TITLE (#$NUMBER) — @$AUTHOR"
+change-title-escapes: "<*_&"
+exclude-labels:
+  - skip-changelog
+categories:
+  - title: "⚠️ Mudanças incompatíveis"
+    labels:
+      - major
+  - title: "✨ Novas funcionalidades"
+    labels:
+      - enhancement
+      - minor
+  - title: "🐛 Correções"
+    labels:
+      - bug
+      - patch
+  - title: "📚 Documentação e manutenção"
+    labels:
+      - documentation
+      - request
+      - dependencies
+  - title: "🔧 Outras mudanças"
+    labels:
+      - "*"
+version-resolver:
+  major:
+    labels:
+      - major
+  minor:
+    labels:
+      - minor
+      - enhancement
+  patch:
+    labels:
+      - patch
+      - bug
+      - dependencies
+  default: patch
+template: |
+  ## Destaques
+
+  <!-- Edite este rascunho e destaque o valor entregue antes de publicar. -->
+
+  $CHANGES
+
+  ## Compatibilidade e migração
+
+  Sem mudanças incompatíveis conhecidas.
+
+  ## Packages
+
+  A publicação da tag anexa o `wheel`, o `sdist` e `SHA256SUMS` à release e envia a imagem para:
+
+  ```text
+  ghcr.io/$OWNER/$REPOSITORY:$RESOLVED_VERSION
+  ```
+
+  ## Checklist de publicação
+
+  - [ ] Versão do `pyproject.toml` confere com a tag
+  - [ ] CI da branch principal está verde
+  - [ ] Notas e breaking changes foram revisados
+  - [ ] Package e imagem foram testados
