@@ -10,7 +10,7 @@ Benchmark didático de GitFlow com um CRUD Python, testes automatizados, cobertu
 - testes automatizados com `pytest` e cobertura mínima de 95%;
 - lint com Ruff;
 - GitHub Actions executado em todo PR para `main` ou `develop`;
-- `main` protegida por PR, aprovação, conversas resolvidas e check `quality` aprovado;
+- `main` protegida por PR, aprovação de outro colaborador, conversas resolvidas e check `quality` aprovado;
 - dependências monitoradas pelo Dependabot e ownership via CODEOWNERS.
 
 ## Executar o projeto
