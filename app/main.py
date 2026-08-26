@@ -58,3 +58,9 @@ def delete_task(task_id: int, repository: Repository) -> Response:
     if not repository.delete(task_id):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tarefa não encontrada")
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@app.get("/tasks/stats")
+def task_stats(repository: Repository) -> dict[str, int]:
+    tasks = repository.list()
+    return {"total": len(tasks)}

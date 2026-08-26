@@ -92,3 +92,12 @@ def test_rejects_invalid_task(client: TestClient) -> None:
     response = client.post("/tasks", json={"title": ""})
 
     assert response.status_code == 422
+
+
+def test_stats(client: TestClient) -> None:
+    create_task(client)
+
+    response = client.get("/tasks/stats")
+
+    assert response.status_code == 200
+    assert response.json() == {"total": 1}
