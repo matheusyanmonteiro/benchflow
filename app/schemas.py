@@ -25,3 +25,11 @@ class Task(TaskCreate):
 
     id: int
     completed: bool = False
+
+
+class TaskSummary(BaseModel):
+    """Contadores agregados das tarefas cadastradas."""
+
+    total: int = Field(ge=0)
+    pending: int = Field(ge=0)
+    completed: int = Field(ge=0)

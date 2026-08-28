@@ -42,6 +42,7 @@ Endpoints disponíveis:
 | `GET` | `/health` | Verifica a saúde da API |
 | `POST` | `/tasks` | Cria uma tarefa |
 | `GET` | `/tasks` | Lista as tarefas |
+| `GET` | `/tasks/summary` | Resume tarefas totais, pendentes e concluídas |
 | `GET` | `/tasks/{id}` | Consulta uma tarefa |
 | `PUT` | `/tasks/{id}` | Atualiza uma tarefa |
 | `DELETE` | `/tasks/{id}` | Exclui uma tarefa |

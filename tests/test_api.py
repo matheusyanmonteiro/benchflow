@@ -38,6 +38,32 @@ def test_get_task(client: TestClient) -> None:
     assert response.json() == task
 
 
+def test_summarize_tasks(client: TestClient) -> None:
+    first_task = create_task(client, "Tarefa pendente")
+    second_task = create_task(client, "Tarefa concluída")
+    client.put(
+        f"/tasks/{second_task['id']}",
+        json={
+            "title": second_task["title"],
+            "description": second_task["description"],
+            "completed": True,
+        },
+    )
+
+    response = client.get("/tasks/summary")
+
+    assert response.status_code == 200
+    assert response.json() == {"total": 2, "pending": 1, "completed": 1}
+    assert first_task["completed"] is False
+
+
+def test_summarize_empty_task_list(client: TestClient) -> None:
+    response = client.get("/tasks/summary")
+
+    assert response.status_code == 200
+    assert response.json() == {"total": 0, "pending": 0, "completed": 0}
+
+
 def test_get_unknown_task_returns_not_found(client: TestClient) -> None:
     response = client.get("/tasks/999")
 
