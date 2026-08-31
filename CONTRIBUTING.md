@@ -46,3 +46,6 @@ O autor deve manter o PR pequeno e fornecer instruções reproduzíveis. O revis
 - testes, cobertura e compatibilidade;
 - riscos de segurança, dados e operação;
 - estratégia de rollback quando a mudança tiver impacto operacional.
+
+
+olá mundo 
